@@ -1,5 +1,7 @@
 package Lesson_6;
 
+import java.util.Objects;
+
 public class Cat {
     int id=0;
     int age;
@@ -22,10 +24,13 @@ public class Cat {
 
 
     @Override
-    public boolean equals(Object obj) {
-        var t = (Cat) obj;
-        return id == t.id && Name == t.Name && age == t.age && color == t.color;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cat cat = (Cat) o;
+        return id == cat.id && age == cat.age && Objects.equals(Name, cat.Name) && Objects.equals(color, cat.color);
     }
+
 
     @Override
     public int hashCode() {
